@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
+.page-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Code Pro', monospace;;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.page-header {
+    padding-top: 100px;
+}
+
+.main-form {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.main-form__input {
+    height: 40px;
+    padding: 10px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #000000;
+    border: 3px solid white;
+}
+
+.main-form__input::placeholder {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.main-form__input::-ms-input-placeholder {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.main-form__input:-ms-input-placeholder {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.main-form__button {
+    box-sizing: border-box;
+    height: 40px;
+    margin-top: 20px;
+    padding: 10px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+}
+
+.notes-list {
+    margin: 0;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.notes-list__item {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 20px 20px;
+    column-gap: 5px;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    min-height: 40px;
+    border: 3px solid white;
+    border-bottom: none;
+}
+
+.notes-list__item--completed {
+    text-decoration: line-through;
+    text-decoration-color: white;
+}
+
+.notes-list__item:last-child {
+    min-height: 40px;
+    border: 3px solid white;
+}
+
+.button {
+    border: none;
+    height: 20px;
+}
+
+.button--done {
+    background-color: #50c878;
+}
+
+.button--delete {
+    background-color: tomato;
+}
+
+.completed {
+    background-color: #faf75c;
+}
+
+.page-footer {
+    margin-top: 50px;
+}
