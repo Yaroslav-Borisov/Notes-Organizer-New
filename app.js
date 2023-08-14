@@ -1,6 +1,7 @@
 const inputElement = document.querySelector(".main-form__input")
 const createBtn = document.querySelector(".main-form__button")
 const listElement = document.querySelector(".notes-list")
+const filter = document.querySelector('.main-form__filter')
 
 
 const notes = [
@@ -12,7 +13,41 @@ const notes = [
         title: "Погулять с собакой по парку",
         completed: true,
     },
+    {
+        title: "Полить цветы",
+        completed: false,
+    },
+    {
+        title: "Сходить в тренажёрный зал",
+        completed: true,
+    },
+    {
+        title: "Купить посудомоечную машину",
+        completed: false,
+    },
+    {
+        title: "Отчислиться из универа",
+        completed: true,
+    },
 ]
+
+
+
+
+filter.addEventListener('input', (event) => {
+    let filteredNotes = []
+    const targetNote = event.target.value.toLowerCase()
+
+    for (i = 0; i < notes.length; i++) {
+        
+        if (notes[i].title.toLocaleLowerCase().includes(targetNote)) {
+            filteredNotes.push(notes[i])
+        } 
+    }    
+
+    render(filteredNotes)
+
+})
 
 function getNoteTemplate(note, index) {
     return `
@@ -24,7 +59,7 @@ function getNoteTemplate(note, index) {
     `
 }
 
-function render() {
+function render(notes) {
     listElement.innerHTML = ''
 
     if (notes.length === 0) {
@@ -36,7 +71,7 @@ function render() {
     }
 }
 
-render()
+render(notes)
 
 createBtn.onclick = function () {
     if (inputElement.value.length === 0) {
@@ -49,7 +84,7 @@ createBtn.onclick = function () {
     }
     
     notes.unshift(newNote)
-    render()
+    render(notes)
     inputElement.value = ''
 }
 
@@ -66,10 +101,11 @@ listElement.onclick = function (event) {
         } else if (type === 'delete') {
             notes.splice(index, 1)
         }
-        render()
+        render(notes)
     }
-
 }
+
+
 
 
 

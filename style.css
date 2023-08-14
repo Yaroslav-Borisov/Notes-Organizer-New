@@ -50,6 +50,23 @@
     color: #ffffff;
 }
 
+.main-form__filter {
+    height: 40px;
+    margin-top: 20px;
+    padding: 10px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #000000;
+    border: 3px solid white;
+}
+
+.main-form__filter::placeholder {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 18px;
+    color: #ffffff;
+}
+
 .main-form__button {
     box-sizing: border-box;
     height: 40px;
