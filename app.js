@@ -2,7 +2,8 @@ const inputElement = document.querySelector(".main-form__input")
 const createBtn = document.querySelector(".main-form__button")
 const listElement = document.querySelector(".notes-list")
 const filter = document.querySelector('.main-form__filter')
-
+const neededBtn = document.querySelector('#filter-needed')
+const completedBtn = document.querySelector('#filter-completed')
 
 const notes = [
     {
@@ -31,8 +32,36 @@ const notes = [
     },
 ]
 
+let isToggleOn = false;
 
+// Мне не нравится, что код в функциях ниже повторяется
+// Но я пока не знаю, как это можно улучшить
 
+neededBtn.onclick = function () {
+    let arr = []
+
+    for (i = 0; i < notes.length; i++) {
+        if (notes[i].completed == false) {
+            arr.push(notes[i])
+        }
+    }
+    
+    isToggleOn = !isToggleOn;
+    isToggleOn ? render(arr) : render(notes);
+}
+
+completedBtn.onclick = function () {
+    let arr = []
+    
+    for (i = 0; i < notes.length; i++) {
+        if (notes[i].completed == true) {
+            arr.push(notes[i])
+        }
+    }
+    
+    isToggleOn = !isToggleOn;
+    isToggleOn ? render(arr) : render(notes);
+}
 
 filter.addEventListener('input', (event) => {
     let filteredNotes = []

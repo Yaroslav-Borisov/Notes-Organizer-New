@@ -13,6 +13,10 @@
 }
 
 .page-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
     padding-top: 100px;
 }
 
@@ -51,6 +55,7 @@
 }
 
 .main-form__filter {
+    flex-grow: 1;
     height: 40px;
     margin-top: 20px;
     padding: 10px;
@@ -67,6 +72,7 @@
     color: #ffffff;
 }
 
+
 .main-form__button {
     box-sizing: border-box;
     height: 40px;
@@ -77,6 +83,14 @@
     color: #000000;
     background-color: #ffffff;
     border: none;
+}
+
+.button__wrapper {
+    display: flex;
+}
+
+.main-form__filter-wrapper {
+    display: flex;
 }
 
 .notes-list {
@@ -112,6 +126,7 @@
 .button {
     border: none;
     height: 20px;
+    width: 20px;
 }
 
 .button--done {
