@@ -32,52 +32,33 @@ const notes = [
     },
 ]
 
-let isNeededToggleOn = false;
-let isCompletedToggleOn = false;
+let activeFilter = null
 let currentNotes = notes
 
-// Мне не нравится, что код в функциях ниже повторяется
-// Но я пока не знаю, как это можно улучшить
-
-neededBtn.onclick = function () {
-    
-    let result = notes.filter(item => item.completed === false)
-    
-    if(isNeededToggleOn) {
-        render(notes)
+const setFilter = (type) => {
+    if (activeFilter === type) {
+        activeFilter = null
         currentNotes = notes
     } else {
-        render(result)
-        currentNotes = result
-    } 
-    isNeededToggleOn = !isNeededToggleOn
-    isCompletedToggleOn = false;
-    console.log(currentNotes)
+        activeFilter = type
+        const onlyCompleted = activeFilter === 'completed'
+        currentNotes = notes.filter(item => item.completed === onlyCompleted)
+    }
+
+    render(currentNotes)
 }
 
-completedBtn.onclick = function () {
-
-    let result = notes.filter(item => item.completed === true)
-    if (isCompletedToggleOn) {
-        render(notes)
-        currentNotes = notes
-    } else {
-        render(result)
-        currentNotes = result
-    } 
-    isCompletedToggleOn = !isCompletedToggleOn
-    isNeededToggleOn = false;
-    console.log(currentNotes)
-}
+neededBtn.onclick = () => setFilter('active')
+completedBtn.onclick = () => setFilter('completed')
 
 filter.addEventListener('input', (event) => {
     let filteredNotes = []
-    const targetNote = event.target.value.toLowerCase()
+    const searchQuery = event.target.value.toLowerCase()
     
-    for (i = 0; i < notes.length; i++) {
+    for (i = 0; i < currentNotes.length; i++) {
         
-        if (notes[i].title.toLocaleLowerCase().includes(targetNote)) {
-            filteredNotes.push(notes[i])
+        if (currentNotes[i].title.toLocaleLowerCase().includes(searchQuery)) {
+            filteredNotes.push(currentNotes[i])
         } 
     }    
 
